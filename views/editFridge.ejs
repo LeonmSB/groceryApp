@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>MyFridge</title>
+        <link rel="stylesheet" href="/styles.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+  <body>
+    <div class="container d-flex justify-content-center">
+        <div>
+      <h1>Edit item</h1>
+      <a href="/myfridge/<%=item._id%>/show"><button class = 'btn btn-primary btn-lg'><ion-icon name="chevron-back-outline"></ion-icon> Back to View Item</button></a>
+      <form action="/myfridge/<%=item._id%>?_method=PUT" method="POST">
+            <h2>Gotten From: </h2>
+          <input class="form-control-lg mt-1" name="Gotten From" type="text" value="<%=item.gottenFrom%>"/> <br>
+          <h2>Expiration Date: </h2>
+          <input class="form-control-lg mt-1" name="Expiration Date" type="date" value="<%=item.expDate%>"/> <br>
+          <h2>Quantity: </h2>
+          <input class="form-control-lg mt-1" name="quantity" type="text" value="<%=item.quantity%>"/><br>
+          <h2>Cost: </h2>
+          <input class="form-control-lg mt-1" name="cost" type="text" value="<%=item.cost%>"/><br>
+          <h2>Necessity Level: </h2>
+          <input class="form-control-lg mt-1" name="Necessity Level" type="text" value="<%=item.necessityLevel%>"/>
+          <h2>Category: </h2>
+          <input class="form-control-lg mt-1" name="Category (meat, veggie, or dairy)" type="text" value="<%=item.category%>"/> <br>
+          <input class = 'btn btn-success btn-lg mt-3' type="submit" value="update item"/>
+      </form>
+    </div>
+  </div>
+  </body>
+</html>

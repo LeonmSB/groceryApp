@@ -2,27 +2,75 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>MyFridge</title>
+        <title>MyFridge App</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
         <header>
+            <div class="container d-flex justify-content-center">
+            <div class="headerAndbtn">
             <div class ="header">
-                <h1>MyFridge</h1>
+                <h1 class="display-5">MyFridge App <ion-icon name="briefcase-outline"></ion-icon></h1>
             </div>
             <div class ='btns'>
-              <a href="/"> <button class='buttons'>Add New Item to Fridge</button></a>
+              <a href="/myfridge/new"> <button class='btn btn-success btn-lg'> Add New Item to Fridge +</button></a>
+            </div>
+            </div>
             </div>
         </header>
-        <div class="container">
+        <div class="row">
             <% for (let i = 0; i < fridgeItems.length; i++) { %>
-          <div class="pokemon-container">
-            <a class="item-page-link" href="/myfridge/<%=fridgeItems[i]._id%>">
-                <div>
-                    <h2>item</h2>
+                <div class="col">
+          <div class="card" style="width: 20rem; margin: 1rem;">
+            <a class="item-page-link" href="/myfridge/<%=fridgeItems[i]._id%>/show" style="text-decoration: none; color: black;">
+                <%if (fridgeItems[i].category == 'meat') {%>
+                    <img src="https://i.imgur.com/QamtBr2.png" title="source: imgur.com" class="card-img-top" style="height: 13rem;"/>
+                <% } else if (fridgeItems[i].category == 'veggie') {%>
+                    <img src="https://i.imgur.com/jklUwBT.png" title="source: imgur.com" class="card-img-top" style="height: 13rem;"/>
+                <% } else if (fridgeItems[i].category == 'dairy'){%>
+                    <img src="https://i.imgur.com/TxfAg0D.png" title="source: imgur.com" class="card-img-top" style="height: 13rem;"/>
+                    <% } else if (fridgeItems[i].category == 'fruit'){%>
+                    <img src="https://i.imgur.com/YAwbNkS.jpg" title="source: imgur.com" class="card-img-top" style="height: 13rem;"/>
+                <% } %>
+                <div class="card-body">
+                    <h1 id="item <%=i%>"><%=fridgeItems[i].name%></h1>
+                    <% if (new Date(fridgeItems[i].expDate) < new Date()) { %>
+                        <h2 class="border border-danger border-5" style="margin: -.15rem -.15rem -.15rem -.15rem;">Expiration Date: <%=fridgeItems[i].expDate%></h2>   
+                    <% } else {%>
+                        <h2>Expiration Date: <%=fridgeItems[i].expDate%></h2>
+                        <% } %>
+                    <h2>Quantity: <%=fridgeItems[i].quantity%></h2>
+                    <!-- <div class="row"> -->
+                    <%let num = fridgeItems[i].necessityLevel %>
+                    <% for (let i = 0; i < num; i++) { %>
+                        <ion-icon size="large" name="star" id="star"></ion-icon>
+                        <%}%>
+                    <!-- </div> -->
                 </div>
             </a>
+                    <div class="row">
+                        <div class ='col'>
+                            <!-- <a href="/"> <button class='btn btn-success'>Eat</button></a> -->
+                            <form id="delete" action="/myfridge/<%=fridgeItems[i]._id%>?_method=DELETE" method="POST">
+                                <input class = "btn btn-success" type="submit" value="      Eat -       "/>
+                              </form>
+                        </div>
+                        <div class ='col'>
+                            <!-- <a href="/"> <button class='btn btn-danger'>Throw Away</button></a> -->
+                            <form id="deleted" action="/myfridge/<%=fridgeItems[i]._id%>?_method=DELETE" method="POST">
+                                <input class = "btn btn-danger" type="submit" value='   Throw Away -   '/>
+                              </form>
+                        </div>
+                    </div>
+            </a>
+        </div>
           </div>
         <% } %>
+        </div>
         </div>
     </body>
 </html>

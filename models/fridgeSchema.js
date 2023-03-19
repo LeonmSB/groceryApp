@@ -6,8 +6,9 @@ const fridgeItemSchema = new mongoose.Schema({
     gottenFrom: {type: String, required: true},
     expDate: {type: String, required: true},
     quantity: {type: Number, required: true},
-    cost: {type: Number, required: true},
-    necessityLevel: {type: Number, required: true}
+    cost: {type: String, required: true},
+    necessityLevel: {type: Number, required: true},
+    category: {type: String, required: true}
 })
 
 

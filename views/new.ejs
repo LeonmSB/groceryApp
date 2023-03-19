@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>MyFridge</title>
+        <link rel="stylesheet" href="/styles.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    </head>
+  <body>
+    <div class="d-flex justify-content-center align-items-center" style="height: 800px">
+    <div>
+      <h1>New item</h1>
+      <a href="/myfridge"><button class = 'btn btn-primary btn-lg'><ion-icon name="chevron-back-outline"></ion-icon> Back to View Fridge
+      </button></a>
+      <form action="/myfridge" method="POST">
+        <input class="form-control-lg mt-1" name="name" type="text" placeholder="name"/> <br>    
+          <input class="form-control-lg mt-1" name="gottenFrom" type="text" placeholder="gotten From"/>
+          <h2>expiration date: </h2>
+          <input class="form-control-lg" name="expDate" type="date"/><br>
+          <input class="form-control-lg mt-1" name="quantity" type="number" placeholder="quantity"/> <br>
+          <input class="form-control-lg mt-1" name="cost" type="text" placeholder="cost"/> <br>
+          <input class="form-control-lg mt-1" name="necessityLevel" type="number" placeholder="Necessity Level"/>
+          <h3>category:</h2>
+        <div class="form-check">    
+          <input class="form-check-input" name="category" type="radio" value="meat"/> meat <br>
+          <input class="form-check-input" name="category" type="radio" value="veggie"> veggie <br>
+          <input class="form-check-input" name="category" type="radio" value="dairy"> dairy <br>
+          <input class="form-check-input" name="category" type="radio" value="fruit"> fruit <br>
+        </div>
+          <input class='btn btn-success btn-lg' type="submit" value="Add Fridge Item +         "/>
+
+      </form>
+    </div>
+  </div>
+  </body>
+</html>
